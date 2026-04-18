@@ -11,8 +11,10 @@ export async function updateSession(request: NextRequest) {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-  // If Supabase isn't configured (e.g. local preview), skip auth entirely.
-  // Admin routes remain inaccessible since they need a real session.
+  // If Supabase isn't configured (e.g. local preview), admin remains locked
+  // but oversight dashboards (/salon, /school, /instructor) render in preview
+  // mode with mock data and a banner. This lets stakeholders review the UI
+  // before the multi-tenant backend is wired in.
   if (!supabaseUrl || !supabaseKey) {
     const path = request.nextUrl.pathname
     if (path.startsWith('/admin')) {
@@ -22,6 +24,7 @@ export async function updateSession(request: NextRequest) {
       redirectUrl.searchParams.set('error', 'supabase_not_configured')
       return NextResponse.redirect(redirectUrl)
     }
+    // /salon, /school, /instructor render with mock data + preview banner.
     return supabaseResponse
   }
 
@@ -81,6 +84,32 @@ export async function updateSession(request: NextRequest) {
     } catch {
       // Schema not yet migrated — fall through and let page handle gracefully
     }
+  }
+
+  // Protect /salon, /school, /instructor — organization-scoped role checks.
+  // The real role lookup lives in OpenServ's multi-tenant backend (see
+  // MULTI-TENANT-REQUIREMENTS.md → organization_members). Until that ships,
+  // we only gate on "is this user authenticated at all?" so the prototypes
+  // remain reviewable behind a real session.
+  const requiresSalon = path.startsWith('/salon')
+  const requiresSchool = path.startsWith('/school')
+  const requiresInstructor = path.startsWith('/instructor')
+
+  if (requiresSalon || requiresSchool || requiresInstructor) {
+    if (!user) {
+      const redirectUrl = request.nextUrl.clone()
+      redirectUrl.pathname = '/auth'
+      redirectUrl.searchParams.set('next', path)
+      redirectUrl.searchParams.set('mode', 'signin')
+      return NextResponse.redirect(redirectUrl)
+    }
+
+    // TODO(openserv): query organization_members for this user and verify role:
+    //   /salon/*      → role in ('salon_owner', 'salon_manager')
+    //   /school/*     → role in ('school_owner', 'school_admin')
+    //   /instructor/* → role === 'instructor' with at least one class grant
+    // For now, fall through and let the page render with mocks so we can
+    // review the UI before the backend is available.
   }
 
   return supabaseResponse
