@@ -575,13 +575,11 @@ export function OveragePacks() {
 /**
  * TopUpPacks — unified mobile-first top-up surface.
  *
- * Replaces two separate stacked sections with one compact tabbed grid.
- * Users switch between Consultation packs and Ask Versani packs without
- * scrolling — everything stays in the viewport.
+ * Shows BOTH Consultation packs AND Ask Versani packs in two clearly
+ * labeled sections. No tabs — users see everything at once.
+ * Each section uses a compact 2-col (mobile) / 3-col (desktop) tile grid.
  */
 export function TopUpPacks() {
-  const [active, setActive] = useState<'consults' | 'ask'>('consults')
-
   const consultPacks = overagePacks.map((p) => ({
     id: `c-${p.size}`,
     label: p.label,
@@ -604,64 +602,70 @@ export function TopUpPacks() {
           : null,
   }))
 
-  const current = active === 'consults' ? consultPacks : askPacks
-  const unit = active === 'consults' ? 'consults' : 'messages'
-
   return (
-    <div>
-      {/* Segmented control — tab switcher */}
-      <div
-        role="tablist"
-        aria-label="Top-up type"
-        className="inline-flex items-center p-1 rounded-full bg-white/[0.04] border border-white/[0.08] mb-6 md:mb-8"
-      >
-        <button
-          role="tab"
-          aria-selected={active === 'consults'}
-          onClick={() => setActive('consults')}
-          className={cn(
-            'px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium tracking-wide transition-all',
-            active === 'consults'
-              ? 'bg-[color:var(--gold)] text-black'
-              : 'text-white/60 hover:text-white/80',
-          )}
-        >
-          Consultations
-        </button>
-        <button
-          role="tab"
-          aria-selected={active === 'ask'}
-          onClick={() => setActive('ask')}
-          className={cn(
-            'px-4 md:px-5 py-2 rounded-full text-xs md:text-sm font-medium tracking-wide transition-all',
-            active === 'ask'
-              ? 'bg-[color:var(--gold)] text-black'
-              : 'text-white/60 hover:text-white/80',
-          )}
-        >
-          Ask Versani
-        </button>
+    <div className="space-y-10 md:space-y-12">
+      {/* Consultation packs */}
+      <div>
+        <div className="flex items-baseline justify-between mb-4 md:mb-5">
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[color:var(--gold)] mb-1">
+              Consultations
+            </div>
+            <h3 className="font-serif text-xl md:text-2xl tracking-tight text-[color:var(--foreground)]">
+              Extra consultations
+            </h3>
+          </div>
+          <span className="hidden md:inline text-xs text-white/45">
+            Never expires
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          {consultPacks.map((pack) => (
+            <TopUpTile
+              key={pack.id}
+              label={pack.label}
+              price={pack.price}
+              description={pack.description}
+              badge={pack.badge}
+              unit="consults"
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Responsive tile grid: 2-col on mobile, 3-col on desktop */}
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-        {current.map((pack) => (
-          <TopUpTile
-            key={pack.id}
-            label={pack.label}
-            price={pack.price}
-            description={pack.description}
-            badge={pack.badge}
-            unit={unit}
-          />
-        ))}
+      {/* Ask Versani packs */}
+      <div>
+        <div className="flex items-baseline justify-between mb-4 md:mb-5">
+          <div>
+            <div className="text-[10px] font-bold uppercase tracking-[0.22em] text-[color:var(--gold)] mb-1">
+              Ask Versani
+            </div>
+            <h3 className="font-serif text-xl md:text-2xl tracking-tight text-[color:var(--foreground)]">
+              Extra Ask Versani messages
+            </h3>
+          </div>
+          <span className="hidden md:inline text-xs text-white/45">
+            Never expires
+          </span>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+          {askPacks.map((pack) => (
+            <TopUpTile
+              key={pack.id}
+              label={pack.label}
+              price={pack.price}
+              description={pack.description}
+              badge={pack.badge}
+              unit="messages"
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Secondary context line */}
-      <p className="mt-4 text-xs text-white/45 text-center md:text-left">
-        {active === 'consults'
-          ? 'Packs work across Pro, Studio, and Studio Plus. Consultations never expire.'
-          : 'Unblock yourself instantly. Messages never expire.'}
+      <p className="text-xs text-white/45 text-center md:text-left">
+        Packs work across Pro, Studio, and Studio Plus. Nothing expires.
       </p>
     </div>
   )
