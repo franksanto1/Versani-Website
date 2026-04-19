@@ -15,10 +15,9 @@ import { CapReachedModal } from '@/components/billing/CapReachedModal'
 // OpenServ's subscription API is live.
 const mockPlan = {
   name: 'Pro',
-  price: 19.99,
+  price: 24.99,
   cadence: 'month',
   nextBilling: 'May 12, 2026',
-  addOnActive: false,
   consultsUsed: 47,
   consultsTotal: 50,
   updatesUsed: 84,
@@ -31,14 +30,6 @@ const mockPlan = {
   topUpsPurchasedThisQuarter: 3,
   topUpSpendThisQuarter: 29.97,
 }
-
-const addOnFeatures = [
-  { label: 'Unlimited virtual try-ons' },
-  { label: 'Full performance dashboard (90-day history)' },
-  { label: 'At-risk client alerts' },
-  { label: 'Weekly performance digest email' },
-  { label: 'Versani Academy Library' },
-]
 
 const topUpPacks: Array<{
   size: 5 | 10 | 25
@@ -63,10 +54,10 @@ const askVersaniTopUpPacks: Array<{
 ]
 
 const billingHistory = [
-  { date: 'Apr 12, 2026', description: 'Pro — monthly', amount: 19.99 },
+  { date: 'Apr 12, 2026', description: 'Pro — monthly', amount: 24.99 },
   { date: 'Apr 3, 2026', description: 'Top-Up 10', amount: 9.99 },
   { date: 'Mar 24, 2026', description: 'Top-Up 10', amount: 9.99 },
-  { date: 'Mar 12, 2026', description: 'Pro — monthly', amount: 19.99 },
+  { date: 'Mar 12, 2026', description: 'Pro — monthly', amount: 24.99 },
   { date: 'Mar 8, 2026', description: 'Top-Up 10', amount: 9.99 },
 ]
 
@@ -87,7 +78,6 @@ function ProgressBar({ used, total }: { used: number; total: number }) {
 }
 
 export default function MembershipPage() {
-  const [addOnActive, setAddOnActive] = useState(mockPlan.addOnActive)
   const [loadingAction, setLoadingAction] = useState<string | null>(null)
   const [capModalOpen, setCapModalOpen] = useState<
     null | 'consultations' | 'ask-versani'
@@ -99,7 +89,7 @@ export default function MembershipPage() {
     setTimeout(() => setLoadingAction(null), 1200)
   }
 
-  const studioTotalIfUpgraded = 34.99 * 3 // quarter
+  const studioTotalIfUpgraded = 39.99 * 3 // quarter
   const currentProSpendIncludingTopUps =
     mockPlan.price * 3 + mockPlan.topUpSpendThisQuarter
   const showStudioNudge = mockPlan.capHitCountThisQuarter >= 2
@@ -129,7 +119,6 @@ export default function MembershipPage() {
               </h2>
               <span className="text-sm text-white/60">
                 · ${mockPlan.price.toFixed(2)}/{mockPlan.cadence}
-                {addOnActive && ' + $4.99 add-on'}
               </span>
             </div>
             <div className="text-xs text-white/50 mt-1">
@@ -186,70 +175,6 @@ export default function MembershipPage() {
           {daysUntilReset} days.
         </p>
       </div>
-
-      {/* Pro Premium Add-On */}
-      {!addOnActive && (
-        <div className="rounded-2xl border border-gold/[0.22] bg-gradient-to-b from-gold/[0.06] to-gold/[0.01] p-8 mb-6">
-          <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-            <div>
-              <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold mb-1.5">
-                Pro Premium Add-On
-              </div>
-              <h2 className="font-serif text-2xl text-foreground">
-                $4.99 / month
-              </h2>
-              <p className="text-sm text-white/60 mt-2 max-w-md">
-                Stack on top of your Pro plan. Unlimited try-ons and the deeper
-                intelligence layer, without jumping to Studio.
-              </p>
-            </div>
-            <button
-              type="button"
-              disabled={loadingAction === 'add-on'}
-              onClick={() => {
-                onPendingAction('add-on')
-                setTimeout(() => setAddOnActive(true), 1200)
-              }}
-              className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full text-sm font-medium tracking-wide transition-all duration-300 ease-luxury bg-gold text-black border border-gold hover:bg-gold-light disabled:opacity-60"
-            >
-              {loadingAction === 'add-on'
-                ? 'Adding…'
-                : 'Add to my plan — $4.99/mo'}
-            </button>
-          </div>
-          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 mt-4">
-            {addOnFeatures.map((f, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-2 text-sm text-white/80"
-              >
-                <CheckIcon />
-                <span>{f.label}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {addOnActive && (
-        <div className="rounded-2xl border border-gold/[0.22] bg-gradient-to-b from-gold/[0.04] to-transparent p-6 mb-6 flex items-center justify-between gap-4 flex-wrap">
-          <div>
-            <div className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold mb-1.5">
-              Pro Premium Add-On — active
-            </div>
-            <p className="text-sm text-white/70">
-              Unlimited try-ons, 90-day dashboard, and priority features on.
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={() => setAddOnActive(false)}
-            className="inline-flex items-center justify-center gap-2 h-9 px-4 rounded-full text-xs font-medium text-white/60 hover:text-white/90 border border-white/[0.1] hover:bg-white/[0.04]"
-          >
-            Remove add-on
-          </button>
-        </div>
-      )}
 
       {/* Need More Consultations */}
       <div className="mb-8">
@@ -487,21 +412,3 @@ function UsageRow({
   )
 }
 
-function CheckIcon() {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="mt-0.5 shrink-0 text-[color:var(--gold)]"
-      aria-hidden="true"
-    >
-      <polyline points="20 6 9 17 4 12" />
-    </svg>
-  )
-}

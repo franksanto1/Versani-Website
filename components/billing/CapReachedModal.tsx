@@ -89,13 +89,13 @@ export function CapReachedModal({
   const upgradeCopy = isAsk
     ? {
         title: 'Upgrade to Studio',
-        detail: '125 Ask Versani messages · 80 consults · Industry benchmarks',
-        price: '$34.99/month — prorated from today',
+        detail: '150 Ask Versani messages · 70 consults · AI client insights',
+        price: '$39.99/month — prorated from today',
       }
     : {
         title: 'Upgrade to Studio',
-        detail: '80 consultations · Industry benchmarks · CSV export',
-        price: '$34.99/month — prorated from today',
+        detail: '70 consultations · AI client insights · CSV export',
+        price: '$39.99/month — prorated from today',
       }
 
   return (

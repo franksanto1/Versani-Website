@@ -35,20 +35,19 @@ export const stripe = new Proxy({} as Stripe, {
   },
 })
 
-export type Tier = 'pro' | 'studio' | 'studio-plus'
+export type Tier = 'pro' | 'studio'
 export type Billing = 'monthly' | 'yearly'
 
 /**
  * Map tier + billing period to Stripe price ID.
- * Pro is monthly-only (annual discount would erode worst-case margin).
+ * Pro and Studio both support monthly and yearly billing (2 months free on yearly).
  */
 export function getPriceId(tier: Tier, billing: Billing): string | null {
   const map: Record<string, string | undefined> = {
     'pro-monthly': process.env.STRIPE_PRICE_PRO_MONTHLY,
+    'pro-yearly': process.env.STRIPE_PRICE_PRO_YEARLY,
     'studio-monthly': process.env.STRIPE_PRICE_STUDIO_MONTHLY,
     'studio-yearly': process.env.STRIPE_PRICE_STUDIO_YEARLY,
-    'studio-plus-monthly': process.env.STRIPE_PRICE_STUDIO_PLUS_MONTHLY,
-    'studio-plus-yearly': process.env.STRIPE_PRICE_STUDIO_PLUS_YEARLY,
   }
   const key = `${tier}-${billing}`
   return map[key] || null

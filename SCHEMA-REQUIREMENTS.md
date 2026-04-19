@@ -12,7 +12,7 @@ This document lists all tables and columns the Versani marketing site + admin co
 | `email` | text | User email | Admin user list |
 | `is_admin` | boolean | Gate for `/admin` routes | Admin middleware |
 | `stripe_customer_id` | text | Links user to Stripe customer | Checkout, portal |
-| `subscription_tier` | text | 'pro' / 'studio' / 'studio-plus' | Billing, admin dashboard |
+| `subscription_tier` | text | 'pro' / 'studio' | Billing, admin dashboard |
 | `subscription_status` | text | 'active' / 'trialing' / 'canceled' / 'past_due' | Billing, dashboard |
 | `current_period_end` | timestamptz | When current subscription period ends | Dashboard, reports |
 | `created_at` | timestamptz | Account creation time | Dashboard |

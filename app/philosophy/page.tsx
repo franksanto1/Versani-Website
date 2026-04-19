@@ -254,7 +254,7 @@ export default function PhilosophyPage() {
             </h2>
             <p className="text-base text-[color:var(--muted-foreground)] mb-10 leading-relaxed">
               Principles are easy to publish. The proof is in the workflow.
-              Start a free 14-day trial — no card required.
+              Start a free 7-day trial — no card required.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <LinkButton href="/auth?mode=signup" size="lg">

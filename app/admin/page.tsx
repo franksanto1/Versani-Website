@@ -2,9 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 
 // Tier pricing for MRR calculation
 const TIER_PRICE: Record<string, number> = {
-  pro: 19.99,
-  studio: 34.99,
-  'studio-plus': 49.99,
+  pro: 24.99,
+  studio: 39.99,
 }
 
 async function fetchMetrics() {
@@ -112,7 +111,7 @@ export default async function AdminDashboardPage() {
         <Metric
           label="Trial Active"
           value={m.trialActive.toString()}
-          sub="In 14-day window"
+          sub="In 7-day window"
         />
         <Metric
           label="New This Month"
@@ -133,7 +132,7 @@ export default async function AdminDashboardPage() {
 
       <h2 className="font-serif text-2xl text-foreground mb-4">Tier breakdown</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {['pro', 'studio', 'studio-plus'].map((tier) => (
+        {['pro', 'studio'].map((tier) => (
           <div
             key={tier}
             className="rounded-2xl border border-white/[0.08] bg-white/[0.04] p-6"

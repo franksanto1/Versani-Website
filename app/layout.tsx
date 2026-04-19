@@ -125,19 +125,13 @@ const softwareJsonLd = {
     {
       '@type': 'Offer',
       name: 'Pro',
-      price: '19.99',
+      price: '24.99',
       priceCurrency: 'USD',
     },
     {
       '@type': 'Offer',
       name: 'Studio',
-      price: '34.99',
-      priceCurrency: 'USD',
-    },
-    {
-      '@type': 'Offer',
-      name: 'Studio Plus',
-      price: '49.99',
+      price: '39.99',
       priceCurrency: 'USD',
     },
     {

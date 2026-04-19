@@ -27,21 +27,15 @@ const platformFeatures = [
 const segments = [
   {
     title: 'Solo colorists',
-    body: 'Pro tier. 50 full consultations per month plus client-update cap, top-up packs that never expire. Enough runway for a busy chair and the tools that matter most.',
+    body: 'Pro tier. 50 full consultations per month plus client-update cap, top-up packs that never expire. Industry benchmarks, Formula A/B memory, and custom templates included.',
     href: '/pricing',
     cta: 'See Pro tier',
   },
   {
-    title: 'Full-time professionals',
-    body: 'Studio tier. 80 full consultations, unlimited virtual try-ons, the full performance dashboard — industry benchmarks included.',
+    title: 'Business operators',
+    body: 'Studio tier. 70 full consultations, unlimited virtual try-ons, AI client insights, CSV export, revenue-per-client tracking, branded reports, and the full performance dashboard.',
     href: '/pricing',
     cta: 'See Studio tier',
-  },
-  {
-    title: 'Color specialists',
-    body: 'Studio Plus. 120 consultations, priority AI, advanced correction tooling, custom formula templates, branded reports.',
-    href: '/pricing',
-    cta: 'See Studio Plus',
   },
   {
     title: 'Multi-chair salons',
@@ -142,7 +136,7 @@ export default function HomePage() {
                 id="segments-heading"
                 className="font-serif font-light text-[clamp(2rem,4.5vw,3.5rem)] leading-[1.1] tracking-tight max-w-3xl mx-auto text-[color:var(--foreground)]"
               >
-                Five tiers, one{' '}
+                Four tiers, one{' '}
                 <em className="italic font-normal text-[color:var(--gold)]">
                   standard of craft
                 </em>
@@ -274,11 +268,11 @@ export default function HomePage() {
               >
                 Start your{' '}
                 <em className="italic font-normal text-[color:var(--gold)]">
-                  14-day free trial
+                  7-day free trial
                 </em>
               </h2>
               <p className="text-base md:text-lg text-white/70 leading-relaxed max-w-xl mx-auto mb-10">
-                Full Studio access for 14 days. Keep everything you create;
+                Full Studio access for 7 days. Keep everything you create;
                 Versani automatically drops to read-only when the trial ends so
                 nothing is lost.
               </p>

@@ -154,8 +154,8 @@ configured in `next.config.js`.
 
 ## Roadmap
 
-- [ ] Pricing page with full tier comparison (Free / Pro / Studio /
-      Studio Plus / Salon per-seat).
+- [ ] Pricing page with full tier comparison (Free Trial / Pro /
+      Studio / Salon per-seat / Custom).
 - [ ] Philosophy page.
 - [ ] Live Supabase + Stripe wiring.
 - [ ] Admin dashboard (real metrics).

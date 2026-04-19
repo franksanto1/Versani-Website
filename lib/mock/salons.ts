@@ -7,7 +7,7 @@
  */
 
 export type Role = 'owner' | 'manager' | 'stylist'
-export type Tier = 'Pro' | 'Studio' | 'Studio Plus'
+export type Tier = 'Pro' | 'Studio'
 export type MemberStatus = 'active' | 'pending' | 'invited' | 'paused'
 
 export interface Stylist {
@@ -119,7 +119,7 @@ export const salonMock = {
       id: 's4',
       name: 'Jordan Rivera',
       role: 'manager',
-      tier: 'Studio Plus',
+      tier: 'Studio',
       scoreAvg: 9.1,
       consultationsThisMonth: 38,
       retentionRate: 0.94,

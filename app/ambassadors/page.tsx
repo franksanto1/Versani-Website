@@ -8,12 +8,12 @@ import { FAQItem } from '@/components/pricing/PricingClient'
 export const metadata: Metadata = {
   title: 'Ambassadors — Founding Circle for master colorists',
   description:
-    'Join the Versani Founding Ambassador circle. Five to eight lifetime Studio Plus seats, 20% lifetime affiliate revenue share, and permanent Founding status.',
+    'Join the Versani Founding Ambassador circle. Five to eight lifetime Studio seats, 20% lifetime affiliate revenue share, and permanent Founding status.',
   alternates: { canonical: '/ambassadors' },
   openGraph: {
     title: 'Versani Founding Ambassador Circle',
     description:
-      'Five to eight slots. Lifetime Studio Plus. 20% affiliate share. Founding status, permanently.',
+      'Five to eight slots. Lifetime Studio. 20% affiliate share. Founding status, permanently.',
     url: '/ambassadors',
     type: 'website',
   },
@@ -21,15 +21,15 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Versani Founding Ambassadors',
     description:
-      'Five to eight slots. Lifetime Studio Plus. Founding status, permanently.',
+      'Five to eight slots. Lifetime Studio. Founding status, permanently.',
   },
 }
 
 const youReceive = [
   {
-    title: 'Lifetime Studio Plus membership',
-    subtitle: '$600/year value, permanently',
-    body: 'Full Studio Plus tier — 150 consultations, 250 client updates, priority AI, correction tooling, custom templates, branded reports — for as long as Versani exists. No recurring fee, no renegotiation.',
+    title: 'Lifetime Studio membership',
+    subtitle: '$480/year value, permanently',
+    body: 'Full Studio tier — 70 consultations, 160 client updates, correction tooling, custom templates, branded reports — for as long as Versani exists. No recurring fee, no renegotiation.',
   },
   {
     title: '20% lifetime affiliate revenue share',
@@ -115,7 +115,7 @@ const faqs = [
   },
   {
     q: 'What happens if the program underperforms?',
-    a: 'Your Founding Ambassador status is permanent regardless of program growth. Lifetime Studio Plus and the 20% affiliate share on already-referred accounts both persist. You are not tied to our upside.',
+    a: 'Your Founding Ambassador status is permanent regardless of program growth. Lifetime Studio and the 20% affiliate share on already-referred accounts both persist. You are not tied to our upside.',
   },
 ]
 
@@ -151,7 +151,7 @@ export default function AmbassadorsPage() {
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-8 text-base md:text-lg text-[color:var(--muted-foreground)] leading-relaxed">
-                Five to eight slots. Lifetime Studio Plus. A permanent seat at
+                Five to eight slots. Lifetime Studio. A permanent seat at
                 the table for the colorists who help us define what
                 professional AI should sound like.
               </p>
