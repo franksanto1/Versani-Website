@@ -37,9 +37,9 @@ const youReceive = [
     body: 'A permanent 20% share of every referred colorist\u2019s subscription revenue, for the lifetime of that account. No expiration, no tier demotion when the program matures.',
   },
   {
-    title: 'Featured Academy masterclass section',
+    title: 'Featured Versani Academy section',
     subtitle: 'Your name, your section',
-    body: 'A dedicated masterclass section inside the Academy library — your technique, your perspective, your category. Versani handles production, editing, and hosting. You teach.',
+    body: 'A dedicated section inside the Versani Academy Library — your technique, your perspective, your category. Versani handles production, editing, and hosting. You teach.',
   },
   {
     title: 'Co-marketing at launch',

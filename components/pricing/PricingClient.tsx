@@ -44,8 +44,7 @@ const proPremiumAddOn = {
     { label: 'Full performance dashboard', detail: '90-day history — not just 30 days' },
     { label: 'At-risk client alerts', detail: 'surface clients who haven\u2019t booked recently' },
     { label: 'Weekly performance digest email', detail: 'a Sunday-morning read on your week' },
-    { label: 'Academy masterclass library', detail: 'access the full library' },
-    { label: 'Priority web research', detail: 'faster fallback when Versani needs the web' },
+    { label: 'Versani Academy Library', detail: 'access the full library of masterclasses and technique walkthroughs' },
   ],
 }
 
@@ -65,7 +64,6 @@ const tiers: Tier[] = [
       { label: 'Limited access — Days 8–14', included: 'AI renderings and voice narration pause; consultations and chat stay on' },
       { label: 'Unlimited Ask Versani throughout', included: true },
       { label: 'Unlimited clients', included: true },
-      { label: 'Web research fallback', included: true },
       { label: 'Day 14', included: 'Upgrade anytime to keep your momentum, or account enters read-only' },
     ],
   },
@@ -91,7 +89,6 @@ const tiers: Tier[] = [
       { label: 'Export client reports as PDF', included: true },
       { label: 'Unlimited client profiles', included: true },
       { label: 'Formula history & reports', included: true },
-      { label: 'Web research fallback', included: true },
       { label: 'Top-up consultation packs available', included: 'add 5, 10, or 25 more anytime — never expire' },
       { label: 'Industry benchmarks & CSV export', included: false },
       { label: 'Shared team database', included: false },

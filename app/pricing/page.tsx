@@ -73,7 +73,6 @@ const comparisonRows = [
   { feature: 'Your actual inventory drives every formula', versani: 'Yes', blendsor: '—' },
   { feature: 'Voice formula narration', versani: 'Yes (Studio)', blendsor: '—' },
   { feature: 'Ask Versani messages / month', versani: '75/125/200 + top-up packs ($1.99+)', blendsor: 'Limited' },
-  { feature: 'Web research fallback', versani: 'Yes', blendsor: '—' },
   { feature: 'Specialist tier for high-volume pros', versani: 'Studio Plus (120/mo)', blendsor: '—' },
   { feature: 'Multi-seat salon tier (shared DB)', versani: 'Yes', blendsor: '—' },
 ]
@@ -89,7 +88,7 @@ const faqs = [
   },
   {
     q: 'What is the Pro Premium Add-On?',
-    a: 'A $4.99/month option for Pro subscribers ($24.98 total). It unlocks unlimited virtual try-ons, the full 90-day performance dashboard, at-risk client alerts, the weekly performance digest email, Academy masterclass library access, and priority web research. Industry benchmarks and CSV export remain Studio-exclusive — those are a real reason to upgrade.',
+    a: 'A $4.99/month option for Pro subscribers ($24.98 total). It unlocks unlimited virtual try-ons, the full 90-day performance dashboard, at-risk client alerts, the weekly performance digest email, and Versani Academy Library access. Industry benchmarks and CSV export remain Studio-exclusive — those are a real reason to upgrade.',
   },
   {
     q: 'How does the free trial work?',

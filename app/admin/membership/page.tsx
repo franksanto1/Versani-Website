@@ -37,8 +37,7 @@ const addOnFeatures = [
   { label: 'Full performance dashboard (90-day history)' },
   { label: 'At-risk client alerts' },
   { label: 'Weekly performance digest email' },
-  { label: 'Academy masterclass library' },
-  { label: 'Priority web research' },
+  { label: 'Versani Academy Library' },
 ]
 
 const topUpPacks: Array<{
