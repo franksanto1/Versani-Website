@@ -226,9 +226,9 @@ export default function PricingPage() {
             {upgradeHighlights.map((item, i) => (
               <div
                 key={i}
-                className="rounded-2xl p-6 bg-white/[0.04] border border-white/[0.08]"
+                className="rounded-2xl p-4 bg-white/[0.04] border border-white/[0.08]"
               >
-                <div className="font-medium text-base mb-2 text-[color:var(--foreground)]">
+                <div className="font-medium text-base mb-1 text-[color:var(--foreground)]">
                   {item.title}
                 </div>
                 <div className="text-sm text-white/60 leading-relaxed">
